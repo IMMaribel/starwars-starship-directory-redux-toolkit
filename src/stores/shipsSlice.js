@@ -16,7 +16,11 @@ export const fetchShips = createAsyncThunk('ships/fetchShips', async (page) => {
 const shipsSlice = createSlice({
   name: 'ships',
   initialState,
-  reducers: {},
+  reducers: {
+    incrementPage(state) {
+      state.currentPage += 1;
+    }
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchShips.pending, (state) => {
@@ -24,10 +28,14 @@ const shipsSlice = createSlice({
       })
       .addCase(fetchShips.fulfilled, (state, action) => {
         state.status = 'succeeded';
-        state.ships = action.payload.results.map(ship => ({
-          ...ship,
+        state.ships = [
+          ...state.ships,
+          ...action.payload.results.map(ship => ({
+            ...ship,
+        
           id: parseInt(ship.url.match(/(\d+)\/$/)[1], 10)
-        }));
+        }))
+      ];
       })
       .addCase(fetchShips.rejected, (state, action) => {
         state.status = 'failed';
@@ -36,4 +44,5 @@ const shipsSlice = createSlice({
   },
 });
 
+export const { incrementPage } = shipsSlice.actions;
 export default shipsSlice.reducer;

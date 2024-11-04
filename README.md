@@ -5,15 +5,15 @@
 A React-based application that retrieves and displays information about Star Wars starships using SWAPI. The project utilizes Redux Toolkit for state management and Tailwind CSS for responsive styling.
 
 ## 📋 Table of Contents
-1. [Overview](#overview)
-2. [Technologies Used](#technologies-used)
-3. [Features](#features)
-4. [Future Improvements](#future-improvements)
-5. [Next Steps](#next-steps)
-6. [Installation](#installation)
-7. [Usage](#usage)
-8. [Project Structure](#project-structure)
-9. [Contributing](#contributing)
+1. [Overview](#-overview)
+2. [Technologies Used](#-technologies-used)
+3. [Features](#-features)
+4. [Future Improvements](#-future-improvements)
+5. [Next Steps](#-next-steps)
+6. [Installation](#-installation)
+7. [Usage](#-usage)
+8. [Project Structure](#-project-structure)
+9. [Contributing](#-contributing)
 10. [License](#-license)
 
 ## 🛸 Overview

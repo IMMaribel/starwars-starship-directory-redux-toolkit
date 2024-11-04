@@ -8,7 +8,7 @@ import { Loader2Icon } from 'lucide-react';
 
 function App() {
 
-  const { ships, status, error } = useFetchShips();
+  const { ships, status, error, loadMoreShips } = useFetchShips();
 
   if (status === 'loading' && ships.length === 0) {
     return (
