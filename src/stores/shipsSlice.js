@@ -23,10 +23,11 @@ const shipsSlice = createSlice({
         state.status = 'loading';
       })
       .addCase(fetchShips.fulfilled, (state, action) => {
-        const currentShipsSet = new Set(action.payload.results);
-   
         state.status = 'succeeded';
-        state.ships = Array.from(currentShipsSet);
+        state.ships = action.payload.results.map(ship => ({
+          ...ship,
+          id: parseInt(ship.url.match(/(\d+)\/$/)[1], 10)
+        }));
       })
       .addCase(fetchShips.rejected, (state, action) => {
         state.status = 'failed';
