@@ -7,6 +7,9 @@ export default {
   theme: {
     
     extend: {
+      borderRadius:{
+          '4xl': '36px'
+      },
       fontFamily:{
         'chackra': ["Chakra Petch", "sans-serif"]
       }

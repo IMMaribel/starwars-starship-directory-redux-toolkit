@@ -21,8 +21,9 @@ const ShipPage = () => {
         ></div>
 
         <div className="relative z-10">
-            <h1 className='flex font-chackra text-3xl mb-10 text-white border-t-2 border-b-2 border-gray-400'>STARSHIPS</h1>
-                <div className='flex col-span-2 justify-center'>
+            <h1 className='flex font-chackra text-3xl mb-10 text-white border-t-2 border-b-2 border-gray-400'>
+                STARSHIPS</h1>
+                <div className='flex flex-col md:flex-row col-span-2 justify-center'>
                 {imageError ? (
                     <div className="flex items-center justify-center w-full h-full bg-gray-700 text-white p-4 rounded-l-lg">
                     Image not available

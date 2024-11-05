@@ -25,6 +25,8 @@ This application serves as a directory for Star Wars starships, allowing users t
 - **Vite**: Modern development server and bundler.
 - **Tailwind CSS**: Utility-first CSS framework for responsive design.
 - **SWAPI**: The Star Wars API for starship data.
+- **LUCIDE**:
+- **MOTION**:
 
 ## 🌟 Features
 - **Dynamic Starship Directory**: Fetches and displays starships from SWAPI.

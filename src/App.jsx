@@ -4,6 +4,7 @@ import useFetchShips from './hooks/useFetchShips';
 import ShipCard from './components/ShipCard.jsx';
 import ShipPage from './pages/shipPage.jsx';
 import  Layout  from './components/Layout.jsx';
+import WelcomePage from './pages/welcomePage.jsx';
 import { Loader2Icon } from 'lucide-react';
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
         <div className="max-w-7xl mx-auto">
         <Layout />
         <Routes>
+        <Route path="/welcome" element={<WelcomePage />} />
           <Route
             path="/"
             element={
