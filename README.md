@@ -50,7 +50,7 @@ git clone https://github.com/your-username/your-repo.git
 Node.js and npm (or yarn) installed.
 Installation:
 2. Clone this repository:
-git clone https://github.com/your-username/your-repo.git
+git clone https://github.com/IMMaribel/starwars-starship-directory-redux-toolkit.git
 3. Navigate to the project directory:
 cd your-repo
 4. Install dependencies:

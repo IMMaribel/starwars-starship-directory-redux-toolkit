@@ -1,17 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import bgimage from '../assets/velluz.jpg';
 
 const ShipPage = () => {
   const { id } = useParams();
-  const ship = useSelector((state) => state.ships.ships.find((ship) => ship.id === parseInt(id)));
+  const ship = useSelector((state) => 
+      state.ships.ships.find((ship) => ship.id === id)
+  );
+  const [imageError, setImageError] = useState(false);
+
+
 
   if (!ship) {
-    return <p className="text-red-500">Ship not found.</p>;
+    return (
+    <div className="min-h-screen bg-gray-950 flex items-center justify-center">
+      <p className="text-red-500">Ship not found.</p>;
+    </div>
+    );
   }
-
-  const [imageError, setImageError] = React.useState(false);
 
   return (
     <div className="relative min-h-[70vh]">

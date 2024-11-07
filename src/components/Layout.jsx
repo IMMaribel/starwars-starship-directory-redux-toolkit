@@ -1,9 +1,20 @@
 import React from 'react';
-import { Facebook, Instagram, Twitter, Youtube, UserRound, LogIn} from 'lucide-react';
+import { Facebook, Instagram, Twitter, Youtube, UserCircle, LogIn, LogOut } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { logout } from '../stores/authSlice';
 import logo from '../assets/starWarsLogo.png';
-import { Link } from 'react-router-dom';
 
 function Layout() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { isAuthenticated, user } = useSelector((state) => state.auth);
+
+  const handleLogout = () => {
+    dispatch(logout());
+    navigate('/login');
+  };
+
   return (
     <header className="mb-8 items-center">
       <div className="flex flex-col md:flex-row justify-between items-center">
@@ -23,21 +34,39 @@ function Layout() {
         </div>
         <img src={logo} alt="logo" className="-mt-10 ml-6 w-60" />
         <div className="flex font-chackra justify-end items-start">
-          <button className="flex px-3 text-gray-400 hover:border-b-2 border-gray-400 hover:text-white">
-          <LogIn size={30} color="gray" className="hover:text-white mr-4" />
-          LOG IN
-          </button>
-          <button className="flex px-3 text-gray-400 hover:border-b-2 border-gray-400 hover:text-white">
-          <UserRound size={30} color="gray" className="hover:text-white mr-2" />
-          SIGN UP
-          </button>
+          {isAuthenticated && user ? (
+            <div className="flex items-center space-x-4">
+              <span className="text-yellow-500">
+                <UserCircle className="inline-block mr-2" size={24} />
+                {user.userName}
+              </span>
+              <button
+                onClick={handleLogout}
+                className="flex items-center px-3 text-gray-400 hover:border-b-2 border-gray-400 hover:text-white"
+              >
+                <LogOut size={24} className="mr-2" />
+                LOGOUT
+              </button>
+            </div>
+          ) : (
+            <>
+              <Link to="/login" className="flex px-3 text-gray-400 hover:border-b-2 border-gray-400 hover:text-white">
+                <LogIn size={24} className="mr-2" />
+                LOG IN
+              </Link>
+              <Link to="/register" className="flex px-3 text-gray-400 hover:border-b-2 border-gray-400 hover:text-white">
+                <UserCircle size={24} className="mr-2" />
+                SIGN UP
+              </Link>
+            </>
+          )}
         </div>
       </div>
-      <div className="flex font-chackra justify-center border-t-2 border-b-2 border-gray-400">
+      <div className="flex font-chackra justify-center border-t-2 border-b-2 border-gray-400 mt-4">
         <Link to="/welcome" className="px-6 py-2 border-l-2 border-r-2 border-gray-400 text-gray-400 hover:border-b-4 hover:border-b-blue-400 hover:text-white">
-        HOME
+          HOME
         </Link>
-        <Link to="/" className="px-6 py-2 border-l-2 border-r-2 border-gray-400 text-gray-400 hover:border-b-4 hover:border-b-blue-400 hover:text-white">
+        <Link to="/starships" className="px-6 py-2 border-l-2 border-r-2 border-gray-400 text-gray-400 hover:border-b-4 hover:border-b-blue-400 hover:text-white">
           STARSHIPS
         </Link>
       </div>

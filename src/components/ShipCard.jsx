@@ -4,13 +4,9 @@ import { RocketIcon } from 'lucide-react';
 
 const ShipCard = ({ ship }) => {
 
-  const id = ship.url.match(/\/(\d+)\/$/)[1];
-
   return (
-    <Link to={`/ships/${id}`}>
+    <Link to={`/ships/${ship.id}`}>
       <div className="bg-gray-900 rounded-lg overflow-hidden shadow-lg transition-transform hover:scale-105">
-        {/* <div className="h-48 bg-gray-800 flex items-center justify-center">
-        </div> */}
         <div className="p-6">
           <div className="flex font-chackra items-center gap-2 mb-2">
             <RocketIcon className="w-5 h-5 text-yellow-400" />
