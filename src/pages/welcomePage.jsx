@@ -1,8 +1,19 @@
 import React from 'react';
 import HorizontalScroll from '../hooks/horizontalScroll';
 import starsbg from '../assets/starsbg.mp4'
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const WelcomePage = () => {
+
+  const handleNavigation = () => {
+    if (isAuthenticated) {
+      navigate('/starships');
+    } else {
+      navigate('/login');
+    }
+  };
+
   return (
     <div className="relative min-h-screen bg-neutral-800 text-white">
       <div className="mx-auto px-4 py-16">

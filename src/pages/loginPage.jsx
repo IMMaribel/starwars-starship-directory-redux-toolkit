@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../stores/authSlice';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import starsbg from '../assets/starsbg.mp4';
 import { UserCircle } from 'lucide-react';
 
@@ -10,15 +10,15 @@ const LoginPage = () => {
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
   const { loading, error } = useSelector((state) => state.auth);
-
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(loginUser({ email, password })).then((result) => {
       if (result.meta.requestStatus === 'fulfilled') {
-        setEmail('');
-        setPassword('');
-        navigate('/'); 
+        const redirectPath = location.state?.from?.pathname || '/starships';
+        navigate(redirectPath, { replace: true });
       }
     });
   };

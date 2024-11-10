@@ -11,7 +11,7 @@ const initialState = {
 
 export const loginUser = createAsyncThunk(
   'auth/loginUser',
-  async (credentials, { rejectWithValue, getState }) => {
+  async (credentials, { rejectWithValue  }) => {
     try {
       const { users } = getState().auth;
       const user = users.find(u => u.email === credentials.email);
