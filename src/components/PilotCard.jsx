@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
 const PilotCard = ({ pilot }) => {
-    
 
     const [imageError, setImageError] = useState(false);
   

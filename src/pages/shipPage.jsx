@@ -4,20 +4,30 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchPilots } from '../stores/pilotsSlice';
 import bgimage from '../assets/velluz.jpg';
 import PilotCard from '../components/PilotCard';
+import { fetchMovies } from '../stores/moviesSlice';
+import MovieCard from '../components/MovieCard'
 
 const ShipPage = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
+
   const ship = useSelector((state) => 
       state.ships.ships.find((ship) => ship.id === id)
   );
 
   const pilots = useSelector((state) => state.pilots.pilots);
+  const movies = useSelector((state) => state.movies.movies); 
   const [imageError, setImageError] = useState(false);
 
   useEffect(() => {
     if (ship && ship.pilots && ship.pilots.length > 0) {
       dispatch(fetchPilots(ship.pilots));
+    }
+  }, [dispatch, ship]);
+
+  useEffect(() => {
+    if (ship && ship.films && ship.films.length > 0) {
+      dispatch(fetchMovies(ship.films));
     }
   }, [dispatch, ship]);
 
@@ -77,9 +87,19 @@ const ShipPage = () => {
                           ) : (
                             <p className="text-white">No pilots available for this ship.</p>
                           )}
-                </div>
-        </div>
-    </div>
+                    </div>
+                    <h2 className="flex font-chackra text-2xl mb-10 text-white border-t-2 border-b-2 border-gray-400 mt-10">MOVIES</h2>
+                      <div className="flex flex-row md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        {movies.length > 0 ? (
+                          movies.map((movie) => (
+                            <MovieCard key={movie.url} movie={movie} />
+                          ))
+                        ) : (
+                          <p className="text-white">No movies available for this ship.</p>
+                        )}
+                      </div>
+              </div>
+      </div>
   );
 };
 
