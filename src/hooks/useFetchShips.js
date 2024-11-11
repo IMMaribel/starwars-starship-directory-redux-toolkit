@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchShips, incrementPage, resetShips } from '../stores/shipsSlice';
+import { fetchShips, incrementPage } from '../stores/shipsSlice';
 
 const useFetchShips = () => {
   const dispatch = useDispatch();
@@ -8,17 +8,16 @@ const useFetchShips = () => {
 
   useEffect(() => {
     if (status === 'idle') {
-      dispatch(resetShips())
       dispatch(fetchShips(1));
     }
   }, [dispatch, status]);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.innerHeight + document.documentElement.scrollTop >= document.documentElement.offsetHeight - 100
-         && status !== 'loading'
-         && hasMore
-      ) {
+      const scrolledToBottom =
+        window.innerHeight + window.pageYOffset >= document.documentElement.scrollHeight - 100;
+
+      if (scrolledToBottom && status !== 'loading' && hasMore) {
         dispatch(incrementPage());
         dispatch(fetchShips(currentPage + 1));
       }
