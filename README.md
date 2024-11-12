@@ -1,6 +1,9 @@
 # STAR WARS API Explorer 🚀 (React + Vite + Redux Toolkit + Tailwind CSS)
 
-![App Overview]()
+![Welcome page](src\assets\appOverview1.png)
+![Register page](src\assets\appOverview2.png)
+![Starships list](src\assets\appOverview3.png)
+![starship details](src\assets\appOverview4.png)
 
 A React-based application that retrieves and displays information about Star Wars starships using SWAPI. The project utilizes Redux Toolkit for state management and Tailwind CSS for responsive styling.
 
@@ -21,18 +24,22 @@ This application serves as a directory for Star Wars starships, allowing users t
 
 ## ⚙️ Technologies Used
 - **React**: Component-based UI.
+- **React Router** (for routing between different pages)
 - **Redux Toolkit**: Efficient state management and API handling.
 - **Vite**: Modern development server and bundler.
 - **Tailwind CSS**: Utility-first CSS framework for responsive design.
 - **SWAPI**: The Star Wars API for starship data.
 - **LUCIDE**:
 - **MOTION**:
+- **Jest** and **React Testing Library** (for testing)
 
 ## 🌟 Features
 - **Dynamic Starship Directory**: Fetches and displays starships from SWAPI.
 - **Detailed Starship View**: Click on a starship for full details.
 - **Responsive Design**: Styled with Tailwind CSS for mobile and desktop.
 - **State Management**: Uses Redux to manage API calls and caching.
+- **Authentication** system with login and registration, using JSON Server Auth or Reqres API.
+- **Protected routes** to ensure only authenticated users can access certain pages (like starships details).
 
 ## 🛠️ Future Improvements
 - **Character and Planet Directories**: Extend functionality to include additional Star Wars data.
@@ -44,8 +51,6 @@ This application serves as a directory for Star Wars starships, allowing users t
 - **Internationalization**: Support for multiple languages.
 
 ## 🖥️ Installation
-1. Clone the repository:
-git clone https://github.com/your-username/your-repo.git
 1. Prerequisites:
 Node.js and npm (or yarn) installed.
 Installation:
@@ -59,9 +64,13 @@ npm install  
 npm start
 
 ## 🔧 Usage
-- Browse Starships: Start by viewing the list of starships on the home page.
-- View Details: Click on a starship card to see more details.
-- Responsive UI: The app adjusts to fit both desktop and mobile devices.
+- Home Page (/): Displays a list of all Star Wars movies. Each movie is clickable, and clicking on a movie will navigate you to the movie's detailed page.
+- Movie Details Page (/movies/:id): Displays detailed information about the movie, such as its title, image, and associated characters.
+- Starship List (/starships): Displays a list of starships. Each starship links to its own details page.
+- Starship Details Page (/starships/:id): Displays detailed information about a specific starship, including pilots, associated movies, and more.
+- Login Page (/login): Allows users to log in to the application.
+- Register Page (/register): Allows users to register for a new account.
+- Protected Routes: If a user is not logged in, they will be redirected to the login page when trying to access protected routes like the starships details page.
 
 ## 📂 Project Structure
 Here is an overview of the project's key files and directories:
@@ -70,14 +79,45 @@ starwars-starship-directory-redux-toolkit/
 
 src/
 
+_tests_/
+
 assets/
+    MovieCard.test.js
+    PilotCard.test.js
+    shipPage.test.js
 
 components/
-ShipCard.jsx   # Displays individual starship info
+    Header.jsx
+    Layout.jsx
+    MovieCard.jsx
+    PilotCard.jsx
+    ShipCard.jsx
+
+guards/
+    ProtectRoute.jsx
+
+hooks/
+    horizontalscroll.jsx
+    useFetchMovies.jsx
+    useFetchPilots.jsx
+    useFetchSips.js
+
+lib/
+    eslint.config.js
+
+pages/
+    loginPage.jsx
+    refisterPage.jsx
+    shipPage.jsx
+    welcomePage.jsx
 
 stores/
-shipSlice.js   # Redux slice for ship data
-store.js       # Configures Redux store
+    authSlice.js
+    movieSlice.js
+    pilotSlice.js
+    shipSlice.js
+    store.js
+
 App.jsx        # Main app component
 index.css      # Global styling
 main.jsx       # Entry point
