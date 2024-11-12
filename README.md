@@ -1,9 +1,9 @@
 # STAR WARS API Explorer 🚀 (React + Vite + Redux Toolkit + Tailwind CSS)
 
-![Welcome page](src\assets\appOverview1.png)
-![Register page](src\assets\appOverview2.png)
-![Starships list](src\assets\appOverview3.png)
-![starship details](src\assets\appOverview4.png)
+![Welcome page](src/assets/appOverview1.png)
+![Register page](src/assets/appOverview2.png)
+![Starships list](src/assets/appOverview3.png)
+![starship details](src/assets/appOverview4.png)
 
 A React-based application that retrieves and displays information about Star Wars starships using SWAPI. The project utilizes Redux Toolkit for state management and Tailwind CSS for responsive styling.
 
